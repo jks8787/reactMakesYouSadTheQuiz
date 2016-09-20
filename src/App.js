@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
-import QuestionContainer from './QuestionContainer.js';
+import Question from './Question.js';
 import data from'./Data.js';
 
-class App extends Component {
+export default class App extends Component {
   render() {
     return (
       <div className='App'>
@@ -14,10 +14,10 @@ class App extends Component {
         <div className='App-intro'>
           this is the info in the inro
         </div>
-        <QuestionContainer questions={data.questions} />
+        <Question
+          questionsData={data}
+        />
       </div>
     );
   }
-}
-
-export default App;
+};
