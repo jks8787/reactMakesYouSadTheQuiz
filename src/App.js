@@ -1,18 +1,20 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import QuestionList from './QuestionList.js';
+import data from'./Data.js';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
+        <h1> This is the h1</h1>
         <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
+          <h2> This is the h2 </h2>
         </div>
-        <p className="App-intro">
+        <div className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        </div>
+        <QuestionList questions={data.questions} />
       </div>
     );
   }
