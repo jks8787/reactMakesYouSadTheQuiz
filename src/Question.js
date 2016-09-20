@@ -22,11 +22,28 @@ export default class Question extends Component{
     }
   }
 
+  onClickYes = () => {
+    console.log('YES');
+    this.setState({
+        selected : 'Yes'
+    });
+  }
+
+  onClickNo = () => {
+    console.log('No');
+    this.setState({
+        selected : 'No'
+    });
+  }
+
+
   render() {
     return (
       <div className='question-wrap'>
         <div className='question'>
-          {this.props.question.value}
+          <p>{this.props.question.value}</p>
+          <a className="button is-info" onClick={this.onClickNo}>No</a>
+          <a className="button is-info"  onClick={this.onClickYes}>Yes</a>
         </div>
       </div>
     );

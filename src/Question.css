@@ -1,3 +1,7 @@
 .question-wrap {
-  background-color: violet;
+  background-color: lightgray;
+}
+
+a.button.is-info {
+  margin: 1rem;
 }

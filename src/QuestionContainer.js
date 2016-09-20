@@ -1,13 +1,15 @@
 import React, { Component, PropTypes } from 'react';
 import Question from './Question.js';
-import './QuestionList.css';
+import './QuestionContainer.css';
 
-export default class QuestionList extends Component {
+export default class QuestionContainer extends Component {
   static propTypes = {
+    currentQuestion: PropTypes.string,
     questions: PropTypes.object
   }
 
   static defaultProps = {
+    currentQuestion: 'a',
     questions: {
       'a': {
         'value': 'I am a yes or no question.. right?',
@@ -24,11 +26,12 @@ export default class QuestionList extends Component {
       }
     }
   }
-  
+
   render() {
+    const { currentQuestion, questions } = this.props
     return (
       <div className="question-list-wrap">
-        <Question question={this.props.questions.a}/>
+        <Question question={questions[currentQuestion]}/>
       </div>
     );
   }
