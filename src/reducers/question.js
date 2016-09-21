@@ -8,7 +8,7 @@ const initialState = {
 
 const findNextQuestion = (currentQuestionId, selected) => {
    const currentQuestion = data.questions[currentQuestionId.toString()];
-   console.log(currentQuestion.steps[selected.toString()].nextQuestionId)
+  console.log('i am in the reducer - i am the next question', currentQuestion.steps[selected.toString()].nextQuestionId)
    return currentQuestion.steps[selected.toString()].nextQuestionId;
 };
 

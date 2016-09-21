@@ -41,6 +41,10 @@ class Question extends Component {
     this.onClickNo = this.onClickNo.bind(this)
   }
 
+  questionValue(id, data) {
+    return data.questions[id].value;
+  }
+
   onClickYes() {
     this.props.dispatch(clickedYes())
   }
@@ -50,13 +54,12 @@ class Question extends Component {
   }
 
   render() {
-    const questionValue = this.props.questionsData.questions[this.props.currentQuestionId].value;
-    console.log('hi', this.props.currentQuestionId);
-    console.log('there', this.props.questionsData.questions[this.props.currentQuestionId]);
+    const data = this.props.questionsData;
+    const id = this.props.state.question.currentQuestionId;
     return (
       <div className='question-wrap'>
         <div className='question'>
-          <p>{questionValue}</p>
+          <p>{this.questionValue(id, data)}</p>
           <a className="button is-info" onClick={this.onClickNo}> No </a>
           <a className="button is-info"  onClick={this.onClickYes}> Yes </a>
         </div>

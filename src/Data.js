@@ -1,7 +1,7 @@
 export default {
   'questions': {
     'a': {
-      'value': 'I am a yes or no question.. right?',
+      'value': 'I am yes or no question 1.. right?',
       'steps': {
         'yes': {
           'suggestionId': null,
@@ -15,7 +15,7 @@ export default {
       'id': 'a'
     },
     'b': {
-      'value': 'I am a yes or no question.. another one right?',
+      'value': 'I am yes or no question 2.. another one right?',
       'steps': {
         'yes': {
           'suggestionId': 'b',
@@ -29,7 +29,7 @@ export default {
       'id': 'b'
     },
     'c': {
-      'value': 'I am a yes or no question.. some other one right?',
+      'value': 'I am yes or no question 3.. some other one right?',
       'steps': {
         'yes': {
           'suggestionId': null,

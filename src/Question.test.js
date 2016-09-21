@@ -31,7 +31,6 @@ it('renders a component', () => {
       'b': 'I am another one'
     }
   }
-  console.log('omg ', data.questions)
   ReactDOM.render(
     <Provider store={createStoreWithMiddleware(appReducer)}>
       <Question
