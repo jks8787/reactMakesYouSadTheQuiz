@@ -45,6 +45,16 @@ class Question extends Component {
     return data.questions[id].value;
   }
 
+  suggestionValue(id, data, selectedVal) {
+    let suggestionId = null;
+    let suggestionVal = null;
+    if (selectedVal !== '') {
+      suggestionId = data.questions[id]['steps'][selectedVal].suggestionId;
+      suggestionVal = (suggestionId !== null) ? data.suggestions[suggestionId] : null;
+    }
+    return suggestionVal;
+  }
+
   onClickYes() {
     this.props.dispatch(clickedYes())
   }
@@ -56,10 +66,15 @@ class Question extends Component {
   render() {
     const data = this.props.questionsData;
     const id = this.props.state.question.currentQuestionId;
+    const selectedVal =  this.props.state.question.selected;
     return (
       <div className='question-wrap'>
         <div className='question'>
-          <p>{this.questionValue(id, data)}</p>
+          <h3 className="title is-3">{this.questionValue(id, data)}</h3>
+          { this.suggestionValue(id, data, selectedVal) !== null ?
+            <h4 className="title is-4">{this.suggestionValue(id, data, selectedVal)}</h4> :
+            null
+          }
           <a className="button is-info" onClick={this.onClickNo}> No </a>
           <a className="button is-info"  onClick={this.onClickYes}> Yes </a>
         </div>

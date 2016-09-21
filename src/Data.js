@@ -45,6 +45,6 @@ export default {
   },
   'suggestions': {
     'a': 'I am a suggestion that is text',
-    'b': 'I am another one'
+    'b': 'I am another suggestion'
   }
 }
