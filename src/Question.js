@@ -70,11 +70,13 @@ class Question extends Component {
     return (
       <div className='question-wrap'>
         <div className='question'>
-          <h4 className="title is-4">{this.questionValue(id, data)}</h4>
+          <div className='suggestion-wrap'>
           { this.suggestionValue(id, data, selectedVal) !== null ?
             <h5 className="title is-5">{this.suggestionValue(id, data, selectedVal)}</h5> :
             null
           }
+          </div>
+          <h4 className="title is-4">{this.questionValue(id, data)}</h4>
           <a className="button is-info" onClick={this.onClickNo}> No </a>
           <a className="button is-info"  onClick={this.onClickYes}> Yes </a>
         </div>
