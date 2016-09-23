@@ -4,9 +4,23 @@ import Question from './Question.js';
 import data from'./Data.js';
 
 export default class App extends Component {
-  render() {
+  constructor() {
+    super(...arguments);
+
+    this.onStartQuiz = this.onStartQuiz.bind(this);
+
+    this.state = { startQuiz: false };
+  }
+
+  onStartQuiz() {
+    this.setState({ startQuiz: true });
+  }
+
+  renderHeader() {
+    if (this.state.startQuiz) { return; }
+
     return (
-      <div className='App'>
+      <div>
         <h1 className='title is-1'>
           React makes you sad?
         </h1>
@@ -21,9 +35,29 @@ export default class App extends Component {
         <div className='App-intro title is-3'>
           Here’s a quiz to make you happy again!
         </div>
-        <Question
-          questionsData={data}
-        />
+      </div>
+    );
+  }
+
+  renderQuiz() {
+    if (this.state.startQuiz) {
+      return (
+        <div>
+          <Question
+            questionsData={data}
+          />
+        </div>
+      );
+    } else {
+      return <button onClick={this.onStartQuiz}>Start Quiz!</button>;
+    }
+  }
+
+  render() {
+    return (
+      <div className='App'>
+        {this.renderHeader()}
+        {this.renderQuiz()}
       </div>
     );
   }
