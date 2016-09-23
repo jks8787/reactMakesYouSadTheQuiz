@@ -1,7 +1,4 @@
-.question-wrap {
-  background-color: lightgray;
-}
-
-a.button.is-info {
-  margin: 1rem;
+.Question h3 {
+  margin: 0 auto;
+	max-width: 700px;
 }
