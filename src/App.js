@@ -1,23 +1,23 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import './App.css';
 import Question from './Question.js';
 import data from'./Data.js';
+import { startQuiz } from './actions/index.js';
 
-export default class App extends Component {
+class App extends Component {
   constructor() {
     super(...arguments);
 
     this.onStartQuiz = this.onStartQuiz.bind(this);
-
-    this.state = { startQuiz: false };
   }
 
   onStartQuiz() {
-    this.setState({ startQuiz: true });
+    this.props.dispatch(startQuiz());
   }
 
   renderHeader() {
-    if (this.state.startQuiz) { return; }
+    if (this.props.state.quiz.started) { return; }
 
     return (
       <div>
@@ -40,7 +40,7 @@ export default class App extends Component {
   }
 
   renderQuiz() {
-    if (this.state.startQuiz) {
+    if (this.props.state.quiz.started) {
       return (
         <div>
           <Question
@@ -62,3 +62,13 @@ export default class App extends Component {
     );
   }
 };
+
+const mapStateToProps = (state) => {
+  return {
+    state
+  };
+};
+
+let app = connect(mapStateToProps)(App);
+
+export default app;
