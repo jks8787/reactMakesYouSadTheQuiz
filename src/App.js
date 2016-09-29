@@ -17,8 +17,6 @@ class App extends Component {
   }
 
   renderHeader() {
-    if (this.props.state.quiz.started) { return; }
-
     return (
       <header className="hero is-primary is-bold">
         <div className="hero-body">
