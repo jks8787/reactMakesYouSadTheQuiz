@@ -40,18 +40,18 @@ class App extends Component {
 
   renderFooter() {
     return (
-			<footer className="hero is-light">
-				<div className="hero-body">
-					<div className="container">
-						<p className="title is-6">
-							Content comes from <a href="https://github.com/gaearon/react-makes-you-sad" target="_blank">react-makes-you-sad</a> flow chart.
-						</p>
-						<p className="subtitle is-6">
-							This experience is brought by <a href="https://github.com/jks8787" target="_blank">Janice K.N. Smith</a>. &copy; 2016.
-						</p>
-					</div>
-				</div>
-			</footer>
+      <footer className="hero is-light">
+        <div className="hero-body">
+          <div className="container">
+            <p className="title is-6">
+              Content comes from <a href="https://github.com/gaearon/react-makes-you-sad" target="_blank">react-makes-you-sad</a> flow chart.
+            </p>
+            <p className="subtitle is-6">
+              This experience is brought by <a href="https://github.com/jks8787" target="_blank">Janice K.N. Smith</a>. &copy; 2016.
+            </p>
+          </div>
+        </div>
+      </footer>
     );
   }
 
@@ -67,11 +67,11 @@ class App extends Component {
     } else {
       return (
         <section className="container">
-					<div className="hero-body">
+          <div className="hero-body">
             <button className="button is-primary is-large" onClick={this.onStartQuiz}>
               Lets do this! &#8658;
             </button>
-					</div>
+          </div>
         </section>
       );
     }

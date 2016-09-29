@@ -80,8 +80,8 @@ class Question extends Component {
           <button className="button is-medium is-outlined" onClick={this.onClickNo}>
             No &#10007;
           </button>
-					&nbsp;
-					&nbsp;
+          &nbsp;
+          &nbsp;
           <button className="button is-medium is-outlined" onClick={this.onClickYes}>
             Yes &#10003;
           </button>
