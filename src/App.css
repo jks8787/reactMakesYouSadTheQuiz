@@ -1,9 +1,18 @@
 .App {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.App > section {
+  padding: 40px 0;
+}
+
+.App > .container {
+  flex: 1;
   text-align: center;
 }
 
-.App-header {
-  background-color: whitesmoke;
-  padding: 2rem;
-  color: gray;
+.App > footer {
+	text-align: center;
 }

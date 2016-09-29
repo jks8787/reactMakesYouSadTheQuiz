@@ -17,39 +17,61 @@ class App extends Component {
   }
 
   renderHeader() {
-    if (this.props.state.quiz.started) { return; }
-
     return (
-      <div>
-        <h1 className='title is-1'>
-          React makes you sad?
-        </h1>
-        <h2 className='title is-2'>
-          the quiz! which is made with react-create-app and redux
-        </h2>
-        <div className='App-header'>
-          <h3 className='title is-3'>
-            content here comes from <a href="https://github.com/gaearon/react-makes-you-sad">react-makes-you-sad</a> flow chart
-          </h3>
+      <header className="hero is-primary is-bold">
+        <div className="hero-body">
+          <div className="container">
+            <span className="is-clearfix is-pulled-right">
+              <iframe src="https://ghbtns.com/github-btn.html?user=jks8787&repo=reactMakesYouSadTheQuiz&type=star&count=true" frameborder="0" scrolling="0" width="75px" height="20px"></iframe>
+            </span>
+            <h1 className='title'>
+              React makes you sad?
+            </h1>
+            <h2 className="subtitle">
+              Here’s a quiz to make you happy again!
+            </h2>
+          </div>
         </div>
-        <div className='App-intro title is-3'>
-          Here’s a quiz to make you happy again!
+      </header>
+    );
+  }
+
+  renderFooter() {
+    return (
+      <footer className="hero is-light">
+        <div className="hero-body">
+          <div className="container">
+            <p className="title is-6">
+              Content comes from <a href="https://github.com/gaearon/react-makes-you-sad" target="_blank">react-makes-you-sad</a> flow chart.
+            </p>
+            <p className="subtitle is-6">
+              This experience is brought by <a href="https://github.com/jks8787" target="_blank">Janice K.N. Smith</a>. &copy; 2016.
+            </p>
+          </div>
         </div>
-      </div>
+      </footer>
     );
   }
 
   renderQuiz() {
     if (this.props.state.quiz.started) {
       return (
-        <div>
+        <section className="container">
           <Question
             questionsData={data}
           />
-        </div>
+        </section>
       );
     } else {
-      return <button onClick={this.onStartQuiz}>Start Quiz!</button>;
+      return (
+        <section className="container">
+          <div className="hero-body">
+            <button className="button is-primary is-large" onClick={this.onStartQuiz}>
+              Lets do this! &#8658;
+            </button>
+          </div>
+        </section>
+      );
     }
   }
 
@@ -58,6 +80,7 @@ class App extends Component {
       <div className='App'>
         {this.renderHeader()}
         {this.renderQuiz()}
+        {this.renderFooter()}
       </div>
     );
   }

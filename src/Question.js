@@ -68,7 +68,7 @@ class Question extends Component {
     const id = this.props.state.question.currentQuestionId;
     const selectedVal =  this.props.state.question.selected;
     return (
-      <div className='question-wrap'>
+      <div className="Question hero-body">
         <div className='question'>
           <div className='suggestion-wrap'>
           { this.suggestionValue(id, data, selectedVal) !== null ?
@@ -76,9 +76,15 @@ class Question extends Component {
             null
           }
           </div>
-          <h4 className="title is-4">{this.questionValue(id, data)}</h4>
-          <a className="button is-info" onClick={this.onClickNo}> No </a>
-          <a className="button is-info"  onClick={this.onClickYes}> Yes </a>
+          <h3 className="title is-4">{this.questionValue(id, data)}</h3>
+          <button className="button is-medium is-outlined" onClick={this.onClickNo}>
+            No &#10007;
+          </button>
+          &nbsp;
+          &nbsp;
+          <button className="button is-medium is-outlined" onClick={this.onClickYes}>
+            Yes &#10003;
+          </button>
         </div>
       </div>
     );
