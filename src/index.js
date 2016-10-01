@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import 'bulma/css/bulma.css';
 import './index.css';
+
 // adding redux and reduxThunk
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
