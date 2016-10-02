@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './App.css';
-import Question from './Question.js';
+import Quiz from './Quiz.js';
+import Suggestion from './Suggestion.js';
 import data from'./Data.js';
-import { startQuiz } from './actions/index.js';
+import { startQuiz, hideSuggestion } from './actions/index.js';
 
 class App extends Component {
   constructor() {
@@ -22,7 +23,7 @@ class App extends Component {
         <div className="hero-body">
           <div className="container">
             <span className="is-clearfix is-pulled-right">
-              <iframe src="https://ghbtns.com/github-btn.html?user=jks8787&repo=reactMakesYouSadTheQuiz&type=star&count=true" frameborder="0" scrolling="0" width="75px" height="20px"></iframe>
+              <iframe src="https://ghbtns.com/github-btn.html?user=jks8787&repo=reactMakesYouSadTheQuiz&type=star&count=true" frameBorder="0" scrolling="0" width="75px" height="20px"></iframe>
             </span>
             <h1 className='title'>
               React makes you sad?
@@ -57,9 +58,7 @@ class App extends Component {
     if (this.props.state.quiz.started) {
       return (
         <section className="container">
-          <Question
-            questionsData={data}
-          />
+          <Quiz questionsData={data.questions}/>
         </section>
       );
     } else {
@@ -75,12 +74,28 @@ class App extends Component {
     }
   }
 
+  renderSuggestion() {
+    if (this.props.state.suggestion.suggestionId) {
+      return (
+        <Suggestion
+          dispatch={this.props.dispatch}
+          onCloseAction={hideSuggestion}
+          suggestionId={this.props.state.suggestion.suggestionId}
+          suggestionData={data.suggestions}
+        />
+      );
+    }
+
+    return null;
+  }
+
   render() {
     return (
       <div className='App'>
         {this.renderHeader()}
         {this.renderQuiz()}
         {this.renderFooter()}
+        {this.renderSuggestion()}
       </div>
     );
   }

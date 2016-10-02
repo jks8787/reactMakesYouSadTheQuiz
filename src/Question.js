@@ -1,39 +1,13 @@
 import React, { Component, PropTypes } from 'react';
-import './Question.css';
-import { connect } from 'react-redux';
-import { clickedNo, clickedYes } from './actions/index.js';
 
-class Question extends Component {
+export default class Question extends Component {
   static propTypes = {
-    currentQuestionId: PropTypes.string,
-    questionsData: PropTypes.object
+    dispatch: PropTypes.func,
+    onClickYes: PropTypes.func,
+    onClickNo: PropTypes.func,
+    question: PropTypes.object,
+    showSuggestion: PropTypes.func
   }
-
-  static defaultProps = {
-    currentQuestionId: 'a',
-    questionData: {
-      'questions': {
-        'a': {
-          'value': 'I am a yes or no question.. right?',
-          'steps': {
-            'yes': {
-              'suggestion': null,
-              'nextQuestion': 'questions.b'
-            },
-            'no': {
-              'suggestion': 'suggestions.a',
-              'nextQuestion': 'questions.b'
-            }
-          },
-          'id': 'a'
-      },
-      'suggestions': {
-        'a': 'I am a suggestion that is text',
-        'b': 'I am another one'
-      }
-    }
-  }
-}
 
   constructor(props) {
     super(props)
@@ -41,61 +15,35 @@ class Question extends Component {
     this.onClickNo = this.onClickNo.bind(this)
   }
 
-  questionValue(id, data) {
-    return data.questions[id].value;
-  }
-
-  suggestionValue(id, data, selectedVal) {
-    let suggestionId = null;
-    let suggestionVal = null;
-    if (selectedVal !== '') {
-      suggestionId = data.questions[id]['steps'][selectedVal].suggestionId;
-      suggestionVal = (suggestionId !== null) ? data.suggestions[suggestionId] : null;
-    }
-    return suggestionVal;
-  }
-
   onClickYes() {
-    this.props.dispatch(clickedYes())
+    this.props.dispatch(this.props.onClickYes());
+    const suggestionId = this.props.question.steps.yes.suggestionId;
+    if (suggestionId !== null ) {
+      this.props.dispatch(this.props.showSuggestion(suggestionId));
+    }
   }
 
   onClickNo() {
-    this.props.dispatch(clickedNo())
+    this.props.dispatch(this.props.onClickNo());
+    const suggestionId = this.props.question.steps.no.suggestionId;
+    if (suggestionId !== null ) {
+      this.props.dispatch(this.props.showSuggestion(suggestionId));
+    }
   }
 
   render() {
-    const data = this.props.questionsData;
-    const id = this.props.state.question.currentQuestionId;
-    const selectedVal =  this.props.state.question.selected;
     return (
-      <div className="Question hero-body">
-        <div className='question'>
-          <div className='suggestion-wrap'>
-          { this.suggestionValue(id, data, selectedVal) !== null ?
-            <h5 className="title is-5">{this.suggestionValue(id, data, selectedVal)}</h5> :
-            null
-          }
-          </div>
-          <h3 className="title is-4">{this.questionValue(id, data)}</h3>
-          <button className="button is-medium is-outlined" onClick={this.onClickNo}>
-            No &#10007;
-          </button>
-          &nbsp;
-          &nbsp;
-          <button className="button is-medium is-outlined" onClick={this.onClickYes}>
-            Yes &#10003;
-          </button>
-        </div>
+      <div className='question'>
+        <h3 className="title is-4">{this.props.question.value}</h3>
+        <button className="button is-medium is-outlined" onClick={this.onClickNo}>
+          No &#10007;
+        </button>
+        &nbsp;
+        &nbsp;
+        <button className="button is-medium is-outlined" onClick={this.onClickYes}>
+          Yes &#10003;
+        </button>
       </div>
     );
   }
 }
-
-const mapStateToProps = (state) => {
-   return {
-     state
-   }
-};
-
-let quest = connect(mapStateToProps)(Question);
-export default quest;
