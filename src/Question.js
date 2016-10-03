@@ -31,7 +31,7 @@ export default class Question extends Component {
     }
   }
 
-  renderActions() {
+  renderButtons() {
     if (this.props.question.steps.yes.nextQuestionId) {
       return (
         <div>
@@ -54,7 +54,7 @@ export default class Question extends Component {
     return (
       <div className='question'>
         <h3 className="title is-4">{this.props.question.value}</h3>
-        {this.renderActions()}
+        {this.renderButtons()}
       </div>
     );
   }
