@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import './Question.css';
 
 export default class Question extends Component {
   static propTypes = {
