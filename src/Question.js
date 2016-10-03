@@ -31,18 +31,30 @@ export default class Question extends Component {
     }
   }
 
+  renderButtons() {
+    if (this.props.question.steps.yes.nextQuestionId) {
+      return (
+        <div>
+          <button className="button is-medium is-outlined" onClick={this.onClickNo}>
+            No &#10007;
+          </button>
+          &nbsp;
+          &nbsp;
+          <button className="button is-medium is-outlined" onClick={this.onClickYes}>
+            Yes &#10003;
+          </button>
+        </div>
+      );
+    }
+
+    return null;
+  }
+
   render() {
     return (
       <div className='question'>
         <h3 className="title is-4">{this.props.question.value}</h3>
-        <button className="button is-medium is-outlined" onClick={this.onClickNo}>
-          No &#10007;
-        </button>
-        &nbsp;
-        &nbsp;
-        <button className="button is-medium is-outlined" onClick={this.onClickYes}>
-          Yes &#10003;
-        </button>
+        {this.renderButtons()}
       </div>
     );
   }
