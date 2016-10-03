@@ -17,7 +17,7 @@ export default class Suggestion extends Component {
   suggestionValue() {
     const data = this.props.suggestionData;
     const id = this.props.suggestionId;
-    return data[id];
+    return { __html: data[id] };
   }
 
   suggestionClose() {
@@ -30,7 +30,14 @@ export default class Suggestion extends Component {
         <div className='modal is-active'>
           <div className='modal-background'></div>
           <div className='modal-card'>
-            <p className='modal-card-body'>{this.suggestionValue()}</p>
+            <header className="modal-card-head">
+              <p className="modal-card-title">Suggestion</p>
+            </header>
+            <section className='modal-card-body'>
+              <div className="content">
+                <div dangerouslySetInnerHTML={this.suggestionValue()} />
+              </div>
+            </section>
           </div>
           <button
             className='modal-close'
