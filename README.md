@@ -1,15 +1,9 @@
+
+This is the information from [react-makes-you-sad](https://github.com/gaearon/react-makes-you-sad),
+In the form of a quiz!
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
-
-For the project to build, **these files must exist with exact filenames**:
-
-* `index.html` is the page template;
-* `favicon.ico` is the icon you see in the browser tab;
-* `src/index.js` is the JavaScript entry point.
-
-You can delete or rename the other files.
-
-You may create subdirectories inside `src`. For faster rebuilds, only files inside `src` are processed by Webpack.  
-You need to **put any JS and CSS files inside `src`**, or Webpack won’t see them.
+( also uses Redux )
 
 ## Available Scripts
 
