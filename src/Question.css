@@ -1,3 +1,7 @@
 .question {
   /* styles for question */
 }
+
+.question .title {
+  padding: 0 0 1rem 0;
+}
