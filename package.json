@@ -4,6 +4,8 @@
   "homepage": "https://jks8787.github.io/reactMakesYouSadTheQuiz",
   "private": true,
   "devDependencies": {
+    "enzyme": "^2.4.1",
+    "react-addons-test-utils": "^15.3.2",
     "react-scripts": "0.4.1",
     "redux-devtools": "^3.3.1"
   },
